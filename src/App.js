@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './components/searchbar'
 import Response from './components/response'
 
+const key = process.env.REACT_APP_API_KEY
 class App extends Component {
   state = {
     search: '',
@@ -17,23 +18,22 @@ class App extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  fetchMovies =(event)=>{
-    if (event.target.value.length > 3) {
-      fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${process.env.REACT_APP_API_KEY}`)
-        .then(resp => resp.json()).then(data => this.setState({ movies: [ data] }))
-    }
+  fetchMovies = (event) => {
+
+    fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${key}`)
+      .then(resp => resp.json()).then(data => this.setState({ movies: [data] }))
+
   }
 
 
 
   render() {
-    console.log(this.state.movies)
-    console.log(this.state.search)
     return (
       <div className="App">
-        <SearchBar handleChange={this.handleChange} search={this.state.search} fetchMovies={this.fetchMovies}/>
-        {this.state.movies.length !== 0? 
-        <Response movies={this.state.movies} />: null}
+        <SearchBar handleChange={this.handleChange} search={this.state.search} fetchMovies={this.fetchMovies} />
+        {this.state.search.length !== 0 ?
+          <Response movies={this.state.movies} /> : null
+        }
       </div>
     );
   }

@@ -9,7 +9,7 @@ class SearchBar extends Component {
         return (
             <div className='search'>
                 <form>
-                    <input placeholder='Movie Title' name='search' value={search} onChange={(e)=> {handleChange(e); fetchMovies(e)}} />
+                    <input placeholder='Movie Title' name='search' value={search} onChange={(e) => { handleChange(e); fetchMovies(e) }} />
                 </form>
             </div>
         );
