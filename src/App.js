@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import SearchBar from './components/searchbar'
+import Response from './components/response'
+
+class App extends Component {
+  state = {
+    search: '',
+    cart: {},
+    movies: []
+  }
+
+
+  //---------FUNCTION & HANDLERS --------------
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  fetchMovies =(event)=>{
+    if (event.target.value.length > 3) {
+      fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${process.env.REACT_APP_API_KEY}`)
+        .then(resp => resp.json()).then(data => this.setState({ movies: [ data] }))
+    }
+  }
+
+
+
+  render() {
+    console.log(this.state.movies)
+    console.log(this.state.search)
+    return (
+      <div className="App">
+        <SearchBar handleChange={this.handleChange} search={this.state.search} fetchMovies={this.fetchMovies}/>
+        {this.state.movies.length !== 0? 
+        <Response movies={this.state.movies} />: null}
+      </div>
+    );
+  }
 }
 
 export default App;
