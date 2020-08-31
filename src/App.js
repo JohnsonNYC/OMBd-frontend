@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 
 import SearchBar from './components/searchbar'
-import Response from './components/response'
+import ResponseContainer from './components/responseContainer'
+import NomineeContainer from './components/nomineeContainer'
 
 const key = process.env.REACT_APP_API_KEY
 class App extends Component {
@@ -19,7 +20,12 @@ class App extends Component {
   }
 
   nominate = (movieObj) => {
-    this.setState({ cart: [...this.state.cart, movieObj] });
+    this.setState({ cart: [...this.state.cart, movieObj] })
+  }
+
+  remove = (movieObj) => {
+    const newArray = this.state.cart.filter((obj) => obj !== movieObj)
+    this.setState({ cart: newArray  })
   }
 
   fetchMovies = (event) => {
@@ -30,13 +36,13 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <SearchBar handleChange={this.handleChange} search={this.state.search} fetchMovies={this.fetchMovies} />
         {this.state.search.length !== 0 ?
-          <Response movies={this.state.movies} nominate={this.nominate} cart={this.state.cart} /> : null
+          <ResponseContainer movies={this.state.movies} nominate={this.nominate} cart={this.state.cart} /> : null
         }
+        <NomineeContainer cart={this.state.cart} remove={this.remove}/>
       </div>
     );
   }
