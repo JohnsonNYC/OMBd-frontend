@@ -4,7 +4,7 @@ import NomineeItem from './nomineeItem'
 
 const NomineeContainer = (props) => {
     const { cart, remove} = props
-    console.log(cart)
+    
     return (
         <div className='nominee-cart'>
             <h1>Your Nominee List</h1>
