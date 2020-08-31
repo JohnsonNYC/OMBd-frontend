@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import {Button} from 'reactstrap';
 
 const MovieItem = (props) => {
     const { movie, nominate, cart } = props
-    const [button, setButton] = useState(false)
 
     let handleDisability = (movieObj) => {
         // if movieObj is inside the cart, disabled=== true. If NOT inside the cart, disabled == false
         // setButton(true)
         // when removing, update button to be false because the movie obj is not in cart anymore
-        if(cart.includes(movieObj)){
+        if (cart.includes(movieObj)) {
             return true
-        }else{
-            return false 
+        } else {
+            return false
         }
     }
+
     return (
         <div>
-            <span>{movie.Title}({movie.Year})</span> <button disabled={handleDisability(movie)} onClick={() => nominate(movie)}> Nominate </button>
+            <span>{movie.Title}({movie.Year})</span> <Button color='info' disabled={handleDisability(movie)} onClick={() => nominate(movie)}> Nominate </Button>
         </div>
     );
 }
