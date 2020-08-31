@@ -8,7 +8,7 @@ const key = process.env.REACT_APP_API_KEY
 class App extends Component {
   state = {
     search: '',
-    cart: {},
+    cart: [],
     movies: []
   }
 
@@ -18,21 +18,24 @@ class App extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  fetchMovies = (event) => {
+  nominate = (movieObj) => {
+    this.setState({ cart: [...this.state.cart, movieObj] });
+  }
 
+  fetchMovies = (event) => {
     fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${key}`)
       .then(resp => resp.json()).then(data => this.setState({ movies: [data] }))
-
   }
 
 
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <SearchBar handleChange={this.handleChange} search={this.state.search} fetchMovies={this.fetchMovies} />
         {this.state.search.length !== 0 ?
-          <Response movies={this.state.movies} /> : null
+          <Response movies={this.state.movies} nominate={this.nominate} cart={this.state.cart} /> : null
         }
       </div>
     );

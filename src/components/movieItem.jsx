@@ -1,11 +1,10 @@
 import React from 'react';
 
 const MovieItem = (props) => {
-    const { movie } = props
-    console.log('movieItem', movie)
+    const { movie, nominate } = props
     return (
         <div>
-            <span>{movie.Title}({movie.Year})</span> <button> Nominate </button>
+            <span>{movie.Title}({movie.Year})</span> <button onClick={() => nominate(movie)}> Nominate </button>
         </div>
     );
 }
