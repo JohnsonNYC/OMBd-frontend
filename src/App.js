@@ -20,7 +20,9 @@ class App extends Component {
   }
 
   nominate = (movieObj) => {
-    this.setState({ cart: [...this.state.cart, movieObj] })
+    if(this.state.cart.length >= 5){
+      this.setState({ cart: [...this.state.cart, movieObj] })
+    }
   }
 
   remove = (movieObj) => {
