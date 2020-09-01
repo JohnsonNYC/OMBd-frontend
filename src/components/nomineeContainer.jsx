@@ -6,7 +6,7 @@ const NomineeContainer = (props) => {
     const { cart, remove } = props
 
     return (
-        <Container className='nominee-cart' style={{backgroundColor:'blue'}}>
+        <Container className='nominee-cart'>
             <h1>Your Nominee List</h1>
             <h2>{cart.length >= 5 ? "Reached Maximum Nominations" : null}</h2>
             <Row xs="3" sm="2" md="4">

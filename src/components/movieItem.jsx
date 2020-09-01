@@ -18,7 +18,8 @@ const MovieItem = (props) => {
 
     return (
         <div>
-            <span>{movie.Title}({movie.Year})</span> <Button color='info' disabled={handleDisability(movie)} onClick={() => nominate(movie)}> Nominate </Button>
+            <span>{movie.Title}({movie.Year})</span> <Button outline size='sm' color='info' disabled={handleDisability(movie)} onClick={() => nominate(movie)}> Nominate </Button>
+            <br/>
         </div>
     );
 }
