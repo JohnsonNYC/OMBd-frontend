@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './components/searchbar'
 import ResponseContainer from './components/responseContainer'
 import NomineeContainer from './components/nomineeContainer'
+import Header from './components/header'
 
 const key = process.env.REACT_APP_API_KEY
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header/>
         <SearchBar handleChange={this.handleChange} search={this.state.search} fetchMovies={this.fetchMovies} />
         {this.state.search.length !== 0 ?
           <ResponseContainer movies={this.state.movies} nominate={this.nominate} cart={this.state.cart} /> : null
