@@ -11,7 +11,7 @@ const NomineeItem = (props) => {
     console.log(property)
     return (
         <Col sm="6" >
-            <animated.div style={useSpring({ opacity: 1, from: { opacity: 0 } })} className='card'>
+            <animated.div style={useSpring({ opacity: 1, from: { opacity: 0 },config:{duration:1000} })} className='card'>
                     <Card>
                         <img width="100%" style={{ height: 'auto', maxHeight: `350px`, width: 'auto', maxWidth: '250px', alignSelf: 'center' }} src={movie.Poster} alt={movie.Title} />
                         <CardBody >
