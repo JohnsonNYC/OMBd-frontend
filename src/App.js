@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   fetchMovies = (event) => {
-    fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=109d2481`)
+    fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${API_KEY}`)
       .then(resp => resp.json()).then(data => this.setState({ movies: [data] }))
   }
 
