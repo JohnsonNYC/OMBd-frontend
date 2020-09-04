@@ -6,7 +6,7 @@ import ResponseContainer from './components/responseContainer'
 import NomineeContainer from './components/nomineeContainer'
 import Header from './components/header'
 
-const key = process.env.REACT_APP_API_KEY
+const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY
 class App extends Component {
   state = {
     search: '',
@@ -32,10 +32,9 @@ class App extends Component {
   }
 
   fetchMovies = (event) => {
-    fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${key}`)
+    fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${REACT_APP_API_KEY}`)
       .then(resp => resp.json()).then(data => this.setState({ movies: [data] }))
   }
-
 
 
   render() {
