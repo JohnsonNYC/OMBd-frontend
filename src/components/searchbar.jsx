@@ -6,11 +6,12 @@ class SearchBar extends Component {
 
 
     render() {
-        const { handleChange, search, fetchMovies } = this.props
+        const { handleChange, search, fetchMovies, handleSubmit } = this.props
         return (
             <Container className='search'>
-                <form>
-                    <input placeholder='Movie Title' name='search' value={search} onChange={(e) => { handleChange(e); fetchMovies(e) }} />
+                <form onSubmit={handleSubmit}>
+                    <input placeholder='Movie Title' name='search' value={search} onChange={(e) => { handleChange(e)  }} />
+                    <input type='submit' value='Submit'/>
                 </form>
             </Container>
         );

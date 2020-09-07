@@ -6,7 +6,7 @@ import ResponseContainer from './components/responseContainer'
 import NomineeContainer from './components/nomineeContainer'
 import Header from './components/header'
 
-const API_KEY = process.env.MY_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
 class App extends Component {
   state = {
     search: '',
@@ -20,6 +20,14 @@ class App extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
+  handleSubmit = (event) =>{
+    event.preventDefault();
+    // console.log(this.state.search)
+    fetch(`http://www.omdbapi.com/?s=${this.state.search}&apikey=${API_KEY}`)
+      .then(resp => resp.json())
+      .then(data => this.setState({ movies: [data] }))
+  }
+
   nominate = (movieObj) => {
     if(this.state.cart.length < 5){
       this.setState({ cart: [...this.state.cart, movieObj] })
@@ -31,17 +39,11 @@ class App extends Component {
     this.setState({ cart: newArray  })
   }
 
-  fetchMovies = (event) => {
-    fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${API_KEY}`)
-      .then(resp => resp.json()).then(data => this.setState({ movies: [data] }))
-  }
-
-
   render() {
     return (
       <div className="App">
         <Header/>
-        <SearchBar handleChange={this.handleChange} search={this.state.search} fetchMovies={this.fetchMovies} />
+        <SearchBar handleSubmit={this.handleSubmit} handleChange={this.handleChange} search={this.state.search} fetchMovies={this.fetchMovies} />
         {this.state.search.length !== 0 ?
           <ResponseContainer movies={this.state.movies} nominate={this.nominate} cart={this.state.cart} /> : null
         }
