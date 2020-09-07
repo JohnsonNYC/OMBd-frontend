@@ -6,7 +6,7 @@ class SearchBar extends Component {
 
 
     render() {
-        const { handleChange, search, fetchMovies, handleSubmit } = this.props
+        const { handleChange, search, fetchMovies } = this.props
         return (
             <Container className='search'>
                 <form >

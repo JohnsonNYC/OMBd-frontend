@@ -5,6 +5,7 @@ import { Button, Card, CardBody, CardTitle, CardSubtitle, Col } from 'reactstrap
 
 const NomineeItem = (props) => {
     const { movie, remove } = props
+    console.log(movie)
     return (
         <Col sm="6" >
             <animated.div style={useSpring({ opacity: 1, from: { opacity: 0 },config:{duration:2000} })} className='card'>
