@@ -18,3 +18,6 @@ Technical requirements
 
 You can find the app deployed below!
 https://myomdb.netlify.app/
+
+Related Project DEMO
+https://www.youtube.com/watch?v=Bow4BPYAJlg&t=141s
