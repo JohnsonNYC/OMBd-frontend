@@ -11,7 +11,6 @@ class SearchBar extends Component {
             <Container className='search'>
                 <form >
                     <input placeholder='Movie Title' name='search' value={search} onChange={(e) => { handleChange(e); fetchMovies(e)  }} />
-                    {/* <input type='submit' value='Submit'/> */}
                 </form>
             </Container>
         );
