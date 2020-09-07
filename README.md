@@ -16,3 +16,8 @@ Technical requirements
 - If a search result has already been nominated, disable its nominate button. √
 - Display a banner when the user has 5 nominations. √
 
+You can find the app deployed below!
+https://myomdb.netlify.app/
+
+Related Project DEMO
+https://www.youtube.com/watch?v=Bow4BPYAJlg&t=141s
