@@ -23,7 +23,7 @@ class App extends Component {
   handleSubmit = (event) =>{
     event.preventDefault();
     // console.log(this.state.search)
-    fetch(`http://www.omdbapi.com/?s=${this.state.search}&apikey=${API_KEY}`)
+    fetch(`https://www.omdbapi.com/?s=${this.state.search}&apikey=${API_KEY}`)
       .then(resp => resp.json())
       .then(data => this.setState({ movies: [data] }))
   }
