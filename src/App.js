@@ -20,10 +20,16 @@ class App extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  handleSubmit = (event) =>{
-    event.preventDefault();
-    // console.log(this.state.search)
-    fetch(`https://www.omdbapi.com/?s=${this.state.search}&apikey=${API_KEY}`)
+  // handleSubmit = (event) =>{
+  //   event.preventDefault();
+  //   // console.log(this.state.search)
+  //   fetch(`https://www.omdbapi.com/?s=${this.state.search}&apikey=${API_KEY}`)
+  //     .then(resp => resp.json())
+  //     .then(data => this.setState({ movies: [data] }))
+  // }
+
+  fetchMovies = (event) =>{
+    fetch(`https://www.omdbapi.com/?s=${event.target.value}&apikey=${API_KEY}`)
       .then(resp => resp.json())
       .then(data => this.setState({ movies: [data] }))
   }
